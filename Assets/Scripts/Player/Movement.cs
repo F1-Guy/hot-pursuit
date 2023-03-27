@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    int bound = 6;
+    [SerializeField]
+    private int bound = 6;
+
     public float speed = 10f;
-    public float acceleration = 1;
+
+    [SerializeField]
+    private float acceleration = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +18,6 @@ public class Movement : MonoBehaviour
 
     }
 
-    // Update is called once per frameh
     void Update()
     {
         float h = Input.GetAxis("Horizontal");
