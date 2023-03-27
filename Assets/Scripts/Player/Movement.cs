@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    int bound = 6;
     public float speed = 10f;
     public float acceleration = 1;
 
@@ -21,6 +22,9 @@ public class Movement : MonoBehaviour
         Vector2 position = transform.position;
 
         position.x += h * Time.deltaTime * speed;
+
+        if (position.x < -bound) position.x = -bound;
+        if (position.x > bound) position.x = bound;
 
         transform.position = position;
     }
