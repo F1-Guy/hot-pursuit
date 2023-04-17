@@ -1,32 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public static class LanePosition
-{
-    public const float farLeft = -4.5f;
-
-    public const float left = -1.65f;
-
-    public const float middle = 0f;
-
-    public const float right = 1.35f;
-
-    public const float farRight = 4.2f;
-}
+using Random = UnityEngine.Random;
 
 public class NpcManager : MonoBehaviour
 {
+    public List<GameObject> SpawnPoints;
+    public List<GameObject> CarOptions;
+    public List<GameObject> Active;
 
-    // Start is called before the first frame update
+    public int SpawnCount = 4;
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
+    IEnumerator SpawnCar()
+    {
+        var randomOffset = Random.insideUnitCircle;
+
+        Instantiate(CarOptions[Random.Range(0, CarOptions.Count)],
+                    SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position + (Vector3)randomOffset,
+                    Quaternion.identity
+                    );
+
+        yield return new WaitForSeconds(1f);
+    }
+
     void Update()
     {
-
+        StartCoroutine(SpawnCar());
     }
 }

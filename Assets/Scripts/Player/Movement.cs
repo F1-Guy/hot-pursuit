@@ -9,8 +9,8 @@ public class Movement : MonoBehaviour
 
     public float speed = 10f;
 
-    [SerializeField]
-    private float acceleration = 1;
+    // [SerializeField]
+    // private float acceleration = 1;
 
     // Start is called before the first frame update
     void Start()

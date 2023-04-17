@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Math = System.Math;
-
 
 public class MoveNpc : MonoBehaviour
 {
@@ -20,20 +17,16 @@ public class MoveNpc : MonoBehaviour
 
     void Start()
     {
-        initalPosition = transform.position;
-        Debug.Log(initalPosition);
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector2 position = transform.position;
-
         position.y += speed * Time.deltaTime * speed * (int)direction;
 
-        if (Math.Abs(position.y) > 8)
-            transform.position = initalPosition;
-        else
-            transform.position = position;
+        if (Math.Abs(position.y) > 8) Destroy(this.gameObject);
+
+        else transform.position = position;
     }
 }
