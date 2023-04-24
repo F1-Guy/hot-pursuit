@@ -59,5 +59,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audi
       objectReference: {fileID: 0}
+    - target: {fileID: 8182255573610625831, guid: 583c3a88c14bf5f4788883f02b4b829d, type: 3}
+      propertyPath: m_TagString
+      value: Npc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 583c3a88c14bf5f4788883f02b4b829d, type: 3}

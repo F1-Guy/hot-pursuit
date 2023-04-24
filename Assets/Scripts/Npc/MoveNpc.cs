@@ -1,5 +1,6 @@
 using UnityEngine;
 using Math = System.Math;
+using Random = UnityEngine.Random;
 
 public class MoveNpc : MonoBehaviour
 {
@@ -9,17 +10,31 @@ public class MoveNpc : MonoBehaviour
         Up = 1
     }
 
-    public Direction direction;
+    [SerializeField]
+    Direction direction;
 
-    public float speed = 2f;
+
+    [SerializeField]
+    float AverageSpeed = 2f;
+
+    static float SpeedVariation = 0.2f;
+
+    float speed;
 
     Vector2 initalPosition;
 
     void Start()
     {
+        if (SpeedVariation > AverageSpeed)
+        {
+            Debug.LogWarning("Speed variation cannot be greater than average speed. Variation set to 0.");
+            SpeedVariation = 0;
+            return;
+        }
+
+        speed = Random.Range(AverageSpeed - SpeedVariation, AverageSpeed + SpeedVariation);
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector2 position = transform.position;
