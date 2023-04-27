@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class Movement : MonoBehaviour
 {
@@ -8,16 +10,23 @@ public class Movement : MonoBehaviour
     [SerializeField]
     float Speed = 10f;
 
+    [SerializeField]
+    Collider2D playerCollider;
+
+
+    GameObject[] colliders;
+
     // [SerializeField]
     // float acceleration = 1;
 
     void Start()
     {
-
     }
 
     void Update()
     {
+        colliders = GameObject.FindGameObjectsWithTag("Npc");
+
         float h = Input.GetAxis("Horizontal");
 
         Vector2 position = transform.position;
@@ -28,5 +37,13 @@ public class Movement : MonoBehaviour
         if (position.x > bound) position.x = bound;
 
         transform.position = position;
+
+        foreach (var car in colliders)
+        {
+            if (playerCollider.bounds.Intersects(car.GetComponent<Collider2D>().bounds))
+            {
+                Debug.Log("Colliders are intersecting!");
+            }
+        }
     }
 }
