@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour
     [SerializeField]
     Collider2D playerCollider;
 
+    [SerializeField]
+    GameObject EndScreen;
 
     GameObject[] colliders;
 
@@ -21,6 +23,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
     }
 
     void Update()
@@ -42,7 +45,8 @@ public class Movement : MonoBehaviour
         {
             if (playerCollider.bounds.Intersects(car.GetComponent<Collider2D>().bounds))
             {
-                Debug.Log("Colliders are intersecting!");
+                EndScreen.SetActive(true);
+                Time.timeScale = 0f;
             }
         }
     }
