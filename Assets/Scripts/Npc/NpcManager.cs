@@ -8,7 +8,7 @@ public class NpcManager : MonoBehaviour
     List<GameObject> CarOptions;
 
     [SerializeField]
-    public List<GameObject> SpawnPoints;
+    List<GameObject> SpawnPoints;
     [SerializeField]
     int MaxNpcCount = 10;
     [SerializeField]
